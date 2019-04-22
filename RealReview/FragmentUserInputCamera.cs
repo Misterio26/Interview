@@ -1,4 +1,5 @@
-﻿using Lime;
+﻿using System.Collections.Generic;
+using Lime;
 using Lime.KineticMotionStrategy;
 using Robot.Core.Common.Camera;
 using Robot.Core.Common.Utils;
@@ -11,11 +12,11 @@ namespace Robot.Layer3.Common.World.UserInput
 	{
 		private const float WheelZoomFactor = 1.1f;
 
-		private readonly Widget inputOwner;
+		private readonly List<Widget> inputOwners;
 		private readonly Camera camera;
 		private readonly UserInputCameraSettings settings;
-		private readonly DragGesture dragGesture;
-		private readonly PinchGesture pinchGesture;
+		private readonly List<DragGesture> dragGestures;
+		private readonly List<PinchGesture> pinchGestures;
 		private readonly StateHelper<InputFragmentState> inputStateHelper;
 		private bool isEnabledDesired;
 
@@ -32,9 +33,9 @@ namespace Robot.Layer3.Common.World.UserInput
 		}
 
 		public FragmentUserInputCamera(
-			Camera camera, in UserInputCameraSettings cameraSettings, Widget inputOwner)
+			Camera camera, in UserInputCameraSettings cameraSettings, List<Widget> inputOwners)
 		{
-			this.inputOwner = inputOwner;
+			this.inputOwners = inputOwners;
 			settings = cameraSettings;
 			this.camera = camera;
 			isEnabledDesired = true;
@@ -42,8 +43,8 @@ namespace Robot.Layer3.Common.World.UserInput
 			inputStateHelper = new StateHelper<InputFragmentState>(
 				InputFragmentState.Detached, ProcessStateInner, OnStateChanged);
 
-			dragGesture = new KineticDragGesture(new DeceleratingKineticMotionStrategy(0.97f, 1.002f));
-			pinchGesture = new PinchGesture(exclusive: true);
+			dragGestures = new List<DragGesture>();
+			pinchGestures = new List<PinchGesture>();
 		}
 
 		protected override int OnGetLayer()
@@ -54,15 +55,29 @@ namespace Robot.Layer3.Common.World.UserInput
 		protected override void OnAppeared()
 		{
 			base.OnAppeared();
-			inputOwner.Gestures.Add(dragGesture);
-			inputOwner.Gestures.Add(pinchGesture);
+
+			foreach (var inputOwner in inputOwners) {
+
+				var dragGesture = new KineticDragGesture(new DeceleratingKineticMotionStrategy(0.97f, 1.002f));
+				var pinchGesture = new PinchGesture(exclusive: true);
+
+				inputOwner.Gestures.Add(dragGesture);
+				dragGestures.Add(dragGesture);
+				inputOwner.Gestures.Add(pinchGesture);
+				pinchGestures.Add(pinchGesture);
+			}
+
 			inputStateHelper.ProcessState();
 		}
 
 		protected override void OnDisappeared()
 		{
-			inputOwner.Gestures.Remove(dragGesture);
-			inputOwner.Gestures.Remove(pinchGesture);
+			for (int i = 0; i < inputOwners.Count; i++) {
+				var inputOwner = inputOwners[i];
+				inputOwner.Gestures.Remove(dragGestures[i]);
+				inputOwner.Gestures.Remove(pinchGestures[i]);
+			}
+
 			base.OnDisappeared();
 			inputStateHelper.ProcessState();
 		}
@@ -80,7 +95,12 @@ namespace Robot.Layer3.Common.World.UserInput
 				return;
 			}
 
-			bool hasActiveDrag = dragGesture.IsActive || pinchGesture.IsActive;
+			bool hasActiveDrag = false;
+
+			for (int i = 0; i < inputOwners.Count; i++) {
+				hasActiveDrag = hasActiveDrag || dragGestures[i].IsActive || pinchGestures[i].IsActive;
+			}
+
 			switch (inputStateHelper.Value) {
 				case InputFragmentState.Idle when hasActiveDrag:
 					inputStateHelper.Value = InputFragmentState.Working;
@@ -119,16 +139,28 @@ namespace Robot.Layer3.Common.World.UserInput
 
 		private void SubscribeOnGestures()
 		{
-			dragGesture.Changed += OnDragged;
-			pinchGesture.Changed += OnPinched;
-			MouseWheelProcessor.Attach(inputOwner, OnMouseWheel);
+			for (int i = 0; i < inputOwners.Count; i++) {
+				var dragGesture = dragGestures[i];
+				var pinchGesture = pinchGestures[i];
+				dragGesture.Changed += OnDragged;
+				pinchGesture.Changed += OnPinched;
+				if (pinchGesture.IsActive || dragGesture.IsActive) {
+					MouseWheelProcessor.Attach(inputOwners[i], OnMouseWheel);
+				}
+			}
 		}
 
 		private void UnsubscribeFromGestures()
 		{
-			dragGesture.Changed -= OnDragged;
-			pinchGesture.Changed -= OnPinched;
-			MouseWheelProcessor.Detach(inputOwner);
+			for (int i = 0; i < inputOwners.Count; i++) {
+				var dragGesture = dragGestures[i];
+				var pinchGesture = pinchGestures[i];
+				dragGesture.Changed -= OnDragged;
+				pinchGesture.Changed -= OnPinched;
+				if (pinchGesture.IsActive || dragGesture.IsActive) {
+					MouseWheelProcessor.Detach(inputOwners[i]);
+				}
+			}
 		}
 
 		private void OnPinched()
@@ -136,9 +168,15 @@ namespace Robot.Layer3.Common.World.UserInput
 			if (!IsInfluenceAllowed()) {
 				return;
 			}
-			camera.Position -= pinchGesture.LastDragDistance / camera.Zoom;
-			float zoom = ClampZoom(camera.Zoom * pinchGesture.LastPinchScale);
-			ZoomOrigin(pinchGesture.MousePosition, zoom);
+
+			for (int i = 0; i < inputOwners.Count; i++) {
+				var pinchGesture = pinchGestures[i];
+				if (pinchGesture.IsActive) {
+					camera.Position -= pinchGesture.LastDragDistance / camera.Zoom;
+					float zoom = ClampZoom(camera.Zoom * pinchGesture.LastPinchScale);
+					ZoomOrigin(pinchGesture.MousePosition, zoom);
+				}
+			}
 		}
 
 		private void OnDragged()
@@ -146,7 +184,13 @@ namespace Robot.Layer3.Common.World.UserInput
 			if (!IsInfluenceAllowed()) {
 				return;
 			}
-			camera.Position -= dragGesture.LastDragDistance / camera.Zoom;
+
+			for (int i = 0; i < inputOwners.Count; i++) {
+				var dragGesture = dragGestures[i];
+				if (dragGesture.IsActive) {
+					camera.Position -= dragGesture.LastDragDistance / camera.Zoom;
+				}
+			}
 		}
 
 		private void OnMouseWheel(Vector2 position, float wheelDelta)
