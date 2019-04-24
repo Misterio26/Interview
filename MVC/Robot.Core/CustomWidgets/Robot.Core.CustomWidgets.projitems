@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>56160189-b1c0-4f1a-b331-4a8abd475ca6</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>Robot.Core.Common</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)src\Extensions\Matrix32Extensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)src\Utils\AnimatorPropertyGetter.Shared.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)src\Utils\CollectionExtensions.Shared.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)src\Utils\CustomWidgetHelper.Shared.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)src\Utils\FillStateHelper.Shared.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)src\Utils\IsometricMath.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)src\Utils\StateHelper.Shared.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)src\Utils\StatesLibrary.Shared.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)src\Utils\UniqueObjectIdsHelper.cs" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,39 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>Robot.Layer3.Common</RootNamespace>
+    <AssemblyName>Robot.Layer3.Common</AssemblyName>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <LangVersion>7.3</LangVersion>
+    <Configurations>
+      Win.Debug; Win.Release;
+      Mac.Debug; Mac.Release;
+      iOS.Debug; iOS.Release;
+      Android.Debug; Android.Release
+    </Configurations>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Win.Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
+    <OutputPath>bin\$(Configuration)\</OutputPath>
+  </PropertyGroup>
+  <Import Project="..\..\Robot.Targets\Platform.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Win.Debug|AnyCPU'">
+    <DefineConstants>TRACE;DEBUG;NETSTANDARD;NETSTANDARD2_0</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="**" />
+    <EmbeddedResource Remove="**" />
+    <None Remove="**" />
+    <Compile Include="src\**" />
+  </ItemGroup>
+  <Import Project="..\..\Robot.Targets\IncludeEngine.props" />
+  <ItemGroup>
+    <ProjectReference Include="..\..\Robot.Core\Common\Robot.Core.Common.csproj" />
+    <ProjectReference Include="..\..\Robot.Layer1\Common\Robot.Layer1.Common.csproj" />
+    <ProjectReference Include="..\..\Robot.Layer2\Common\Robot.Layer2.Common.csproj" />
+  </ItemGroup>
+  <Import Project="..\CustomWidgets\Robot.Layer3.CustomWidgets.projitems" Label="Shared" />
+</Project>

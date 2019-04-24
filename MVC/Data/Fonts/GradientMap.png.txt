@@ -1,0 +1,3 @@
+TextureAtlas None
+MipMaps No
+PVRFormat RGBA8

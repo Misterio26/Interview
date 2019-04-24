@@ -1,0 +1,8 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ProjectReference Include="$(SolutionDir)../Citrus/Lemon/Lemon.$(OS).csproj" />
+    <ProjectReference Include="$(SolutionDir)../Citrus/Lime/Extensions/DynamicFont/DynamicFont.$(OS).csproj" />
+    <ProjectReference Include="$(SolutionDir)../Citrus/Lime/Lime.$(OS).csproj" />
+    <ProjectReference Include="$(SolutionDir)../Citrus/Yuzu/Yuzu.$(OS).csproj" />
+  </ItemGroup>
+</Project>

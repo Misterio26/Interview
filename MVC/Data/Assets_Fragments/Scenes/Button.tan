@@ -1,0 +1,88 @@
+{
+	"class":"Lime.Button, Lime",
+	"Animations":[
+		{
+			"IsLegacy":true,
+			"Markers":[
+				{
+					"Action":1,
+					"Id":"Normal"
+				},
+				{
+					"Action":1,
+					"Frame":10,
+					"Id":"Focus"
+				},
+				{
+					"Action":1,
+					"Frame":20,
+					"Id":"Press"
+				},
+				{
+					"Action":1,
+					"Frame":30,
+					"Id":"Release"
+				},
+				{
+					"Action":1,
+					"Frame":40,
+					"Id":"Disable"
+				}
+			]
+		}
+	],
+	"Color":[4294967295],
+	"Components":[
+		{
+			"class":"Lime.LayoutConstraints, Lime",
+			"MaxSize":[Infinity,96],
+			"MinSize":[0,96]
+		}
+	],
+	"Id":"Button",
+	"Nodes":[
+		{
+			"class":"Lime.SimpleText, Lime",
+			"Anchors":15,
+			"Color":[4294967295],
+			"Font":{
+				"Name":"HeroBold"
+			},
+			"FontHeight":53,
+			"HAlignment":1,
+			"Id":"TextPresenter",
+			"Pivot":[0.5,0.5],
+			"Position":[128,48],
+			"Size":[256,96],
+			"VAlignment":1
+		},
+		{
+			"class":"Lime.Image, Lime",
+			"Animators":[
+				{
+					"class":"Lime.Color4Animator, Lime",
+					"ReadonlyKeys":[
+						[0,0,[4294967295]],
+						[10,0,[4294967295]],
+						[20,0,[4289309097]],
+						[30,0,[4294967295]],
+						[40,0,[4294967295]]
+					],
+					"TargetProperty":"Color"
+				}
+			],
+			"Color":[4294967295],
+			"Id":"PanelMicro",
+			"Pivot":[0.5,0.5],
+			"Position":[128,48],
+			"Size":[256,96],
+			"Texture":{
+				"class":"Lime.SerializableTexture, Lime",
+				"SerializationPath":"/Assets_Fragments/Sprites/PanelMicro"
+			}
+		}
+	],
+	"Pivot":[0.5,0.5],
+	"Position":[180,166],
+	"Size":[256,96]
+}

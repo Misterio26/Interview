@@ -1,0 +1,2 @@
+# Error #
+Changelog is empty!

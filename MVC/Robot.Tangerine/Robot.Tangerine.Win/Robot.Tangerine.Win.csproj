@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C6D1C061-71DE-4152-AEC0-B9314723480E}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Robot.Tangerine</RootNamespace>
+    <AssemblyName>Robot.Tangerine</AssemblyName>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <LangVersion>7.3</LangVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;WIN</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;WIN</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="RobotTangerineMain.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Citrus\Lemon\Lemon.Win.csproj">
+      <Project>{538e41e4-725c-4521-bcf3-a5591a1a3afd}</Project>
+      <Name>Lemon.Win</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Citrus\Lime\Extensions\DynamicFont\DynamicFont.Win.csproj">
+      <Project>{fe8512bc-7a55-425c-8bc1-ad4d9785cf12}</Project>
+      <Name>DynamicFont.Win</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Citrus\Lime\Lime.Win.csproj">
+      <Project>{fc2de6c9-641a-4230-8d29-ea4035cd8708}</Project>
+      <Name>Lime.Win</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Citrus\Orange\Orange.Win.csproj">
+      <Project>{6f0c1a51-492a-4e6e-b302-e212d441ebf3}</Project>
+      <Name>Orange.Win</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Citrus\Tangerine\Tangerine\Tangerine.Win.csproj">
+      <Project>{3e49f498-47e1-4d67-9f13-eaca50fff4ae}</Project>
+      <Name>Tangerine.Win</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Citrus\Yuzu\Yuzu.Win.csproj">
+      <Project>{ddd2dfe9-ced2-4cea-adf0-5a6865865a46}</Project>
+      <Name>Yuzu.Win</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Robot.Core\Tan\Robot.Core.CustomWidgets.Tan.csproj">
+      <Project>{928f246b-f172-43ac-a9e1-de9ca7e45d6c}</Project>
+      <Name>Robot.Core.CustomWidgets.Tan</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Robot.Layer1\Tan\Robot.Layer1.CustomWidgets.Tan.csproj">
+      <Project>{14566621-91bb-4c33-895d-bd1a940d252b}</Project>
+      <Name>Robot.Layer1.CustomWidgets.Tan</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Robot.Layer2\Tan\Robot.Layer2.CustomWidgets.Tan.csproj">
+      <Project>{adb3562a-4294-41ed-96eb-010921c5814c}</Project>
+      <Name>Robot.Layer2.CustomWidgets.Tan</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Robot.Layer3\Tan\Robot.Layer3.CustomWidgets.Tan.csproj">
+      <Project>{c51389be-e1df-4733-a13e-aa83f90a2973}</Project>
+      <Name>Robot.Layer3.CustomWidgets.Tan</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Robot.Layer4\Tan\Robot.Layer4.CustomWidgets.Tan.csproj">
+      <Project>{dac9a601-8a30-4901-a00e-6fcf47a25e59}</Project>
+      <Name>Robot.Layer4.CustomWidgets.Tan</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+         Other similar extension points exist, see Microsoft.Common.targets.
+    <Target Name="BeforeBuild">
+    </Target>
+    <Target Name="AfterBuild">
+    </Target>
+    -->
+</Project>

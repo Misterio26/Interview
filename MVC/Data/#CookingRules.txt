@@ -1,0 +1,5 @@
+TextureAtlas ${DirectoryName}
+AtlasOptimization DrawCalls
+HighQualityCompression Yes
+DDSFormat RGBA8
+GenerateOpacityMask Yes

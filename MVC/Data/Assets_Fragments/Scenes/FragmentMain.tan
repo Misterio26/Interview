@@ -1,0 +1,99 @@
+{
+	"class":"Robot.Layer3.Common.FragmentMain, Robot.Layer3.Common",
+	"Color":[4294967295],
+	"Nodes":[
+		{
+			"class":"Lime.Frame, Lime",
+			"Color":[4294967295],
+			"Components":[
+				{
+					"class":"Lime.LinearLayout, Lime",
+					"Direction":1,
+					"Spacing":25
+				}
+			],
+			"Id":"Buttons",
+			"Nodes":[
+				{
+					"class":"Lime.Button, Lime",
+					"Color":[4294967295],
+					"Components":[
+						{
+							"class":"Lime.LayoutConstraints, Lime",
+							"MaxSize":[Infinity,96],
+							"MinSize":[0,96]
+						}
+					],
+					"ContentsPath":"/Assets_Fragments/Scenes/Button",
+					"Id":"ButtonUser1024",
+					"Size":[255.99998,96],
+					"Text":"User 1024"
+				},
+				{
+					"class":"Lime.Button, Lime",
+					"Color":[4294967295],
+					"Components":[
+						{
+							"class":"Lime.LayoutConstraints, Lime",
+							"MaxSize":[Infinity,96],
+							"MinSize":[0,96]
+						}
+					],
+					"ContentsPath":"/Assets_Fragments/Scenes/Button",
+					"Id":"ButtonUser2048",
+					"Position":[0,121],
+					"Size":[255.99998,96],
+					"Text":"User 2048"
+				},
+				{
+					"class":"Lime.Button, Lime",
+					"Color":[4294967295],
+					"Components":[
+						{
+							"class":"Lime.LayoutConstraints, Lime",
+							"MaxSize":[Infinity,96],
+							"MinSize":[0,96]
+						}
+					],
+					"ContentsPath":"/Assets_Fragments/Scenes/Button",
+					"Id":"ButtonAdd1024",
+					"Position":[0,242],
+					"Size":[255.99998,96],
+					"Text":"Add 1024"
+				},
+				{
+					"class":"Lime.Button, Lime",
+					"Color":[4294967295],
+					"Components":[
+						{
+							"class":"Lime.LayoutConstraints, Lime",
+							"MaxSize":[Infinity,96],
+							"MinSize":[0,96]
+						}
+					],
+					"ContentsPath":"/Assets_Fragments/Scenes/Button",
+					"Id":"ButtonAdd2048",
+					"Position":[0,363],
+					"Size":[255.99998,96],
+					"Text":"Add 2048"
+				}
+			],
+			"Pivot":[0.5,0.5],
+			"Position":[180,166],
+			"Size":[255.99998,96]
+		},
+		{
+			"class":"Lime.Image, Lime",
+			"Color":[4294967295],
+			"Id":"PatternedBG",
+			"Pivot":[0.5,0.5],
+			"Position":[512,384],
+			"Size":[1024,1024],
+			"Texture":{
+				"class":"Lime.SerializableTexture, Lime",
+				"SerializationPath":"/Assets_Fragments/Sprites/PatternedBG"
+			}
+		}
+	],
+	"Size":[1024,768]
+}

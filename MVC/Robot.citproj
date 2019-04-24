@@ -1,0 +1,6 @@
+{
+	Title: 'Robot',
+	Version: '1.0',
+	DontSynchronizeProject: true,
+	GeneratedScenesPath: 'Layer3/Common'
+}

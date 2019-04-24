@@ -1,0 +1,77 @@
+{
+	"class":"Robot.Layer3.Common.FragmentUser, Robot.Layer3.Common",
+	"Color":[4294967295],
+	"Nodes":[
+		{
+			"class":"Lime.SimpleText, Lime",
+			"Color":[4294967295],
+			"Font":{
+				"Name":"HeroBold"
+			},
+			"FontHeight":64.5,
+			"HAlignment":1,
+			"Id":"TextUserHealth",
+			"Pivot":[0.5,0.5],
+			"Position":[766.1667,566.12134],
+			"Size":[461.3333,70.66666],
+			"Text":"100",
+			"VAlignment":1
+		},
+		{
+			"class":"Lime.SimpleText, Lime",
+			"Color":[4294967295],
+			"Font":{
+				"Name":"HeroBold"
+			},
+			"FontHeight":64.5,
+			"HAlignment":1,
+			"Id":"TextUserName",
+			"Pivot":[0.5,0.5],
+			"Position":[766.1666,432.1214],
+			"Size":[461.3333,70.66666],
+			"Text":"User Name",
+			"VAlignment":1
+		},
+		{
+			"class":"Lime.Image, Lime",
+			"Color":[4294967295],
+			"Id":"IcoHeartNormal",
+			"Pivot":[0.5,0.5],
+			"Position":[766.1666,568.4167],
+			"Size":[179.22461,155.59059],
+			"Texture":{
+				"class":"Lime.SerializableTexture, Lime",
+				"SerializationPath":"/Assets_Fragments/Sprites/IcoHeartNormal"
+			}
+		},
+		{
+			"class":"Lime.Image, Lime",
+			"Color":[4294967295],
+			"Id":"ImageAvatar",
+			"Pivot":[0.5,0.5],
+			"Position":[766.1666,249.78802],
+			"Size":[256,256],
+			"Texture":{
+				"class":"Lime.SerializableTexture, Lime"
+			}
+		},
+		{
+			"class":"Lime.NineGrid, Lime",
+			"Anchors":15,
+			"BottomOffset":0.1,
+			"Color":[4294967295],
+			"Id":"BG",
+			"LeftOffset":0.1,
+			"Pivot":[0.5,0.5],
+			"Position":[764.4919,384],
+			"RightOffset":0.1,
+			"Size":[519.0162,768],
+			"Texture":{
+				"class":"Lime.SerializableTexture, Lime",
+				"SerializationPath":"/Assets_Fragments/Sprites/MiddGreen"
+			},
+			"TopOffset":0.1
+		}
+	],
+	"Size":[1024,768]
+}

@@ -1,0 +1,29 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <Choose>
+        <When Condition="'$(Configuration)' == 'Win.Debug' OR '$(Configuration)' == 'Win.Release' ">
+            <PropertyGroup>
+                <OS>Win</OS>
+            </PropertyGroup>
+        </When>
+        <When Condition="'$(Configuration)' == 'Mac.Debug' OR '$(Configuration)' == 'Mac.Release' ">
+            <PropertyGroup>
+                <OS>Mac</OS>
+            </PropertyGroup>
+        </When>
+        <When Condition="'$(Configuration)' == 'iOS.Debug' OR '$(Configuration)' == 'iOS.Release' ">
+            <PropertyGroup>
+                <OS>iOS</OS>
+            </PropertyGroup>
+        </When>
+        <When Condition="'$(Configuration)' == 'Android.Debug' OR '$(Configuration)' == 'Android.Release' ">
+            <PropertyGroup>
+                <OS>Android</OS>
+            </PropertyGroup>
+        </When>
+        <Otherwise>
+            <PropertyGroup>
+                <OS>UnknownOS</OS>
+            </PropertyGroup>
+        </Otherwise>
+    </Choose>
+</Project>

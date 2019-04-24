@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{87884330-1A04-4008-9D2F-05585F4C7E05}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Robot.Win</RootNamespace>
+    <AssemblyName>Robot</AssemblyName>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
+    <LangVersion>7.3</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
+    <OutputPath>bin\$(Configuration)\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineConstants>DEBUG;WIN</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineConstants>WIN</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>3</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <DefineConstants>DEBUG;WIN</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <DefineConstants>WIN</DefineConstants>
+    <Optimize>true</Optimize>
+    <WarningLevel>3</WarningLevel>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="OpenTK, Version=1.1.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Citrus\3rdParty\OpenTK\OpenTK.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Application.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Data.Win">
+      <Link>Data.Win</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Citrus\Lemon\Lemon.Win.csproj">
+      <Project>{538e41e4-725c-4521-bcf3-a5591a1a3afd}</Project>
+      <Name>Lemon.Win</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Citrus\Lime\Extensions\DynamicFont\DynamicFont.Win.csproj">
+      <Project>{fe8512bc-7a55-425c-8bc1-ad4d9785cf12}</Project>
+      <Name>DynamicFont.Win</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Citrus\Lime\Lime.Win.csproj">
+      <Project>{fc2de6c9-641a-4230-8d29-ea4035cd8708}</Project>
+      <Name>Lime.Win</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Citrus\Yuzu\Yuzu.Win.csproj">
+      <Project>{ddd2dfe9-ced2-4cea-adf0-5a6865865a46}</Project>
+      <Name>Yuzu</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Robot.Core\Common\Robot.Core.Common.csproj">
+      <Project>{3a8acaef-b1e7-4e67-8658-50289a3f14a2}</Project>
+      <Name>Robot.Core.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Robot.Core\Win\Robot.Core.Win.csproj">
+      <Project>{c271ecda-97da-43a5-98ce-845895cf58c4}</Project>
+      <Name>Robot.Core.Win</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Robot.Layer1\Common\Robot.Layer1.Common.csproj">
+      <Project>{5f236fa4-175b-4e5d-a967-d140e2b9bb42}</Project>
+      <Name>Robot.Layer1.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Robot.Layer1\Win\Robot.Layer1.Win.csproj">
+      <Project>{6cd1d23f-a9b5-4f63-a5fc-210c30caa5f5}</Project>
+      <Name>Robot.Layer1.Win</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Robot.Layer2\Common\Robot.Layer2.Common.csproj">
+      <Project>{321ffd0b-58a9-4aa4-b607-041db2010326}</Project>
+      <Name>Robot.Layer2.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Robot.Layer2\Win\Robot.Layer2.Win.csproj">
+      <Project>{31926e5b-86e1-4f3f-9333-4af38eb2ec2d}</Project>
+      <Name>Robot.Layer2.Win</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Robot.Layer3\Common\Robot.Layer3.Common.csproj">
+      <Project>{ebea62d2-1cbd-4d13-b7de-c2032acf4f14}</Project>
+      <Name>Robot.Layer3.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Robot.Layer3\Win\Robot.Layer3.Win.csproj">
+      <Project>{352a9da9-4b89-4529-99ba-615e4c104494}</Project>
+      <Name>Robot.Layer3.Win</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Robot.Layer4\Common\Robot.Layer4.Common.csproj">
+      <Project>{bf324797-8926-46c0-ace7-5007419597ce}</Project>
+      <Name>Robot.Layer4.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Robot.Layer4\Win\Robot.Layer4.Win.csproj">
+      <Project>{39559f1b-2936-4253-8f9a-674f827303a1}</Project>
+      <Name>Robot.Layer4.Win</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <CookAssetsCommand>Cook Game Assets</CookAssetsCommand>
+    <DisableFastUpToDateCheck>true</DisableFastUpToDateCheck>
+  </PropertyGroup>
+</Project>

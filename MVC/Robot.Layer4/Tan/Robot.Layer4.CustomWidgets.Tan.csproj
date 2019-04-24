@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>Robot.Layer4.Common</RootNamespace>
+    <AssemblyName>Robot.Layer4.Common</AssemblyName>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <LangVersion>7.3</LangVersion>
+    <Configurations>Debug;Release</Configurations>
+    <OS>Win</OS>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <IntermediateOutputPath>..\..\Robot.OrangePlugin\obj\$(Configuration)CustomWidgets\</IntermediateOutputPath>
+    <OutputPath>..\..\Robot.OrangePlugin\bin\$(Configuration)CustomWidgets\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>DEBUG;TRACE;NETSTANDARD;NETSTANDARD2_0</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="**" />
+    <EmbeddedResource Remove="**" />
+    <None Remove="**" />
+    <Compile Include="src\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Robot.Core\Tan\Robot.Core.CustomWidgets.Tan.csproj" />
+    <ProjectReference Include="..\..\Robot.Layer1\Tan\Robot.Layer1.CustomWidgets.Tan.csproj" />
+    <ProjectReference Include="..\..\Robot.Layer2\Tan\Robot.Layer2.CustomWidgets.Tan.csproj" />
+    <ProjectReference Include="..\..\Robot.Layer3\Tan\Robot.Layer3.CustomWidgets.Tan.csproj" />
+  </ItemGroup>
+  <Import Project="..\..\Robot.Targets\IncludeEngine.props" />
+  <Import Project="..\CustomWidgets\Robot.Layer4.CustomWidgets.projitems" Label="Shared" />
+</Project>
