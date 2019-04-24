@@ -50,6 +50,7 @@
 *.ttf   binary
 *.fbx   binary
 *.ogv   binary
+*.ico   binary
 
 ###############################################################################
 # diff behavior for common document formats
