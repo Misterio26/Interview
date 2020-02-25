@@ -214,6 +214,20 @@ namespace Launcher
 		private string builderPath
 		{
 			get {
+				var msBuild16Path = Path.Combine(
+					Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86),
+					@"Microsoft Visual Studio\2019\BuildTools\MSBuild\Current\Bin\", "MSBuild.exe");
+				if (File.Exists(msBuild16Path)) {
+					return msBuild16Path;
+				}
+
+				msBuild16Path = Path.Combine(
+					Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86),
+					@"Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin\", "MSBuild.exe");
+				if (File.Exists(msBuild16Path)) {
+					return msBuild16Path;
+				}
+
 				var visualStudioRegistryPath = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\WOW6432Node\Microsoft\VisualStudio\SxS\VS7");
 				if (visualStudioRegistryPath != null) {
 					var vsPath = visualStudioRegistryPath.GetValue("15.0", string.Empty) as string;
@@ -223,12 +237,16 @@ namespace Launcher
 					}
 				}
 
-				var msBuild15Path = Path.Combine(@"C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\MSBuild\15.0\Bin\", "MSBuild.exe");
+				var msBuild15Path = Path.Combine(
+					Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86),
+					@"Microsoft Visual Studio\2017\BuildTools\MSBuild\15.0\Bin\", "MSBuild.exe");
 				if (File.Exists(msBuild15Path)) {
 					return msBuild15Path;
 				}
 
-				var msBuild14Path = Path.Combine(@"C:\Program Files (x86)\MSBuild\14.0\Bin\", "MSBuild.exe");
+				var msBuild14Path = Path.Combine(
+					Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86),
+					@"MSBuild\14.0\Bin\", "MSBuild.exe");
 				if (File.Exists(msBuild14Path)) {
 					return msBuild14Path;
 				}
