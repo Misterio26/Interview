@@ -1,34 +1,30 @@
-public class ExtPlayer : Player
+public class Player
 {
-	public delegate void HealthChangedDelegate(int oldHealth, int newHealth);
+    public int Health {
+        get; private set;
+    }
 
-	public event HealthChangedDelegate HealthChanged;
+    public Player(int health) {
+        Health = health;
+    }
+
+    public void SetHealth(int value) {
+        Health = value;
+    }
 }
 
-class ExtProgram : Program
+class Program
 {
-	// Виджет, отображающий игроку здоровье.
-	private TextView healthView;
+    private const int NewPayerHealth = 100;
+    private const int Damage = 10;
 
-	public static void ExtMain(string[] args)
-	{
-		// Вызов кода по созданию игрока.
-		Main(args);
-
-		healthView.Text = player.Health.ToString();
-		player.HealthChanged += OnPlayerHealthChanged;
-
-		// Ударяем игрока.
-		HitPlayer();
-	}
-
-	private void OnPlayerHealthChanged(int oldHealth, int newHealth)
-	{
-		healthView.Text = newHealth.ToString();
-		if (newHealth - oldHealth < -10) {
-			healthView.Color = Color.Red;
-		} else {
-			healthView.Color = Color.White;
-		}
-	}
+    private Player player;
+    
+    public static void Main(string[] args)
+    {
+        // Создаем нового игрока.
+        player = new Player(NewPayerHealth);
+        // Ударяем игрока.
+        player.SetHealth(player.Health - Damage);
+    }
 }
